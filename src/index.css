@@ -61,3 +61,27 @@
 .saved-vendor-row .row-main{min-width:0}
 .saved-vendor-row .status-select{max-width:150px}
 @media(max-width:760px){.marketplace-hero{align-items:flex-start;flex-direction:column;padding:20px}.marketplace-hero h2{font-size:25px}.vendor-filters{grid-template-columns:1fr}.vendor-grid{grid-template-columns:1fr}.saved-vendor-row{flex-wrap:wrap}.saved-vendor-row .row-main{flex-basis:100%}}
+
+
+/* Consistent interaction states and notification affordances */
+button,a,.event-card,.vendor-card,.nav-link,.icon-btn,.status-select,.field{transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease,color .22s ease,opacity .22s ease}
+button:not(:disabled){cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.48}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #bda8cd;outline-offset:3px}
+.btn:not(:disabled):hover,.light-btn:hover,.voice-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px #6d587b20}
+.icon-btn{position:relative}
+.icon-btn:hover{background:#eee7f4;color:#725a83;transform:translateY(-1px)}
+.icon-active{background:#eee7f4;color:#725a83}
+.notification-dot{position:absolute;right:7px;top:7px;width:7px;height:7px;border-radius:50%;background:#cf8c91;border:1px solid #fff}
+.notification-panel{position:absolute;z-index:20;right:76px;top:66px;width:min(320px,calc(100vw - 30px));padding:14px;background:#ffffffed;backdrop-filter:blur(18px);border:1px solid #eee7f1;border-radius:16px;box-shadow:0 18px 45px #382a401c;animation:modalIn .2s ease}
+.notification-panel .section-row{margin:0 0 8px}
+.notification-panel>button{width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:12px;border:0;border-radius:10px;background:transparent;color:#55495e;font-size:12px}
+.notification-panel>button:hover{background:#f4eff7}
+.brand-home{display:inline-flex;border:0;background:transparent;padding:0;border-radius:12px}
+.brand-home:hover{transform:translateY(-1px);opacity:.85}
+.plan-draft{display:grid;gap:10px;text-align:left;padding:15px;border:1px solid #e9e0ed;background:#ffffffc9;border-radius:15px}
+.plan-draft>strong{font-size:13px;color:#55475e}
+.plan-draft label{display:flex;align-items:center;gap:8px;font-size:11px;color:#6f6475}
+.plan-draft input{accent-color:#826a91}
+.page-wrap{animation:pageEnter .32s ease both}
+@media(prefers-reduced-motion:reduce){button,a,.event-card,.vendor-card,.nav-link,.icon-btn,.status-select,.field{transition:none!important}}
