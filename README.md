@@ -27,7 +27,7 @@ The solution is organised around an **event workspace**. An organiser signs in, 
 - **Event management:** Each event stores details such as its name, type, date, expected guest count, budget, location and event vibe.
 - **Tasks:** Organisers add tasks with a category, priority and optional due date, then mark tasks as complete or remove them.
 - **Budget tracking:** Expenses are recorded with a category and estimated amount. The workspace shows the planned budget, tracked amount and remaining amount.
-- **Guest management:** Organisers add guests and maintain each guest's RSVP state as pending, confirmed or declined.
+- **Guest management:** Organisers add guests, maintain RSVP status and generate private, token-based RSVP links. Guests can open a dedicated invitation page and confirm or decline without creating an Evebud account (after the RSVP database migration is applied).
 - **Vendor marketplace:** Businesses can submit profiles for review. Only profiles with a published status appear in the marketplace. Organisers can search and filter published profiles, add vendors to an event shortlist and update their booking stage.
 - **Profile:** Users can update their display name and upload a profile photo.
 - **Planning assistance:** The current AI Studio creates a predefined event-planning starter checklist. Organisers can review the suggestions and add them to their task list.
@@ -55,7 +55,7 @@ The dashboard and notification panel provide quick access to event information, 
 | Event workspaces | Create and view events associated with the signed-in account |
 | Tasks | Add, complete and delete tasks; category, priority and optional due date |
 | Budget | Add and remove estimated expenses; view budget totals |
-| Guests | Add and remove guests; update RSVP status |
+| Guests | Add and remove guests; update RSVP status; private RSVP-link workflow is implemented but requires its database migration |
 | Vendors | Submit vendor profiles for review; browse published profiles; shortlist and update booking stage |
 | Profile | Update display name and upload avatar to Supabase Storage |
 | Notifications | In-app panel showing open tasks, pending RSVPs and a link to the vendor shortlist |
@@ -138,7 +138,7 @@ Never place a Supabase service-role key or other server-side secret in a `VITE_*
 
 - Connect a live generative-AI service for event-specific plans, timelines and budget suggestions.
 - Integrate Google Maps/Places for location and venue discovery.
-- Add reminders, calendar integration and invitation/RSVP workflows.
+- Add reminders, calendar integration and invitation delivery through email/WhatsApp (private RSVP links and the guest response page are implemented; automated delivery is future scope).
 - Expand vendor communication, quotation and booking workflows.
 - Add collaboration for co-organisers and role-based access.
 - Improve reporting and analytics for event progress and spending.
