@@ -93,18 +93,17 @@ function downloadCsv(filename:string, rows:Record<string,unknown>[]){
  const safeCell=(value:unknown)=>{
   let cell=String(value??'');
   // Prevent spreadsheet formula execution when a CSV is opened in Excel/Sheets.
-  if(/^[\\s]*[=+\\-@]/.test(cell))cell="'"+cell;
+  if(/^[\s]*[=+\-@]/.test(cell))cell="'"+cell;
   return '"'+cell.replace(/"/g,'""')+'"';
  };
- const csv=[columns.map(safeCell).join(','),...rows.map(row=>columns.map(key=>safeCell(row[key])).join(','))].join('\\r\\n');
- const blob=new Blob(['\\uFEFF',csv],{type:'text/csv;charset=utf-8;'});
+ const csv=[columns.map(safeCell).join(','),...rows.map(row=>columns.map(key=>safeCell(row[key])).join(','))].join('\r\n');
+ const blob=new Blob(['\uFEFF',csv],{type:'text/csv;charset=utf-8;'});
  const url=URL.createObjectURL(blob);
  const anchor=document.createElement('a');
  anchor.href=url;anchor.download=filename;anchor.style.display='none';
  document.body.appendChild(anchor);anchor.click();anchor.remove();
  URL.revokeObjectURL(url);
 }
-
 function Brand(){return <div className="brand"><span className="brand-mark"><Flower2 size={25}/></span><span className="serif">evebud</span></div>}
 function Stat({icon:Icon,label,value}:{icon:any,label:string,value:string|number}){return <div className="stat-card"><span className="stat-icon"><Icon size={18}/></span><div><small>{label}</small><strong>{value}</strong></div></div>}
 function EventCard({event,index,onClick}:{event:EventRow,index:number,onClick:()=>void}){return <button className={'event-card tint-'+(index%3)} onClick={onClick}><div className="event-card-top"><span className="event-type">{event.event_type}</span><span className="event-arrow"><ArrowUpRight size={17}/></span></div><h3 className="serif">{event.title}</h3><p><MapPin size={14}/>{event.location||'Location to be decided'}</p><div className="event-card-foot"><span><Calendar size={14}/>{event.event_date?new Date(event.event_date+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'Date to be decided'}</span><b>{money(Number(event.budget))}</b></div></button>}
