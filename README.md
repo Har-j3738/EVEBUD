@@ -100,7 +100,8 @@ Add the Supabase project URL and browser-safe anon/publishable key to `.env.loca
 
 ```env
 VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_or_publishable_key
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+# Legacy projects may continue using VITE_SUPABASE_ANON_KEY
 ```
 
 Then start the development server:
