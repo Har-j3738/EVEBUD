@@ -146,3 +146,8 @@ Never place a Supabase service-role key or other server-side secret in a `VITE_*
 ## 9. Conclusion
 
 Evebud brings core event-planning activities into a single workspace, helping organisers coordinate tasks, budgets, guests and vendor shortlists without switching between disconnected tools. The current build establishes the core workflow, while live AI planning, map discovery and deeper booking integrations remain future enhancements.
+
+
+## Profile and role foundation
+
+The migration `supabase/migrations/20261102_profiles_role_foundation.sql` introduces private user profiles for organizer, vendor, and guest account types. New auth users receive an organizer profile by default, existing users are backfilled, and authenticated clients can update only their display name and avatar URL. Role assignment remains a trusted administrative/backend operation. Review and apply the migration manually in the Supabase SQL Editor; it is not run automatically by the frontend or deployment workflow.
