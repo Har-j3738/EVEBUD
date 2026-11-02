@@ -9,8 +9,9 @@ type ExpenseRow = { id:string; event_id:string; title:string; category:string; e
 type VendorRow = { id:string; owner_id:string; business_name:string; category:string; city:string; description:string|null; phone:string|null; email:string|null; website:string|null; starting_price:number|null; price_unit:string|null; service_area:string|null; status:string };
 type SavedVendor = { id:string; event_id:string; vendor_profile_id:string|null; business_name:string; category:string|null; formatted_address:string|null; phone_number:string|null; website:string|null; rating:number|null; notes:string|null; status:string; quoted_amount:number|null; booking_status:string };
 const url = import.meta.env.VITE_SUPABASE_URL as string|undefined;
-const anon = import.meta.env.VITE_SUPABASE_ANON_KEY as string|undefined;
-const supabase:SupabaseClient|null = url && anon ? createClient(url,anon) : null;
+// Prefer the current Supabase publishable key; keep the legacy anon variable as a migration fallback.
+const publishableKey = (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY) as string|undefined;
+const supabase:SupabaseClient|null = url && publishableKey ? createClient(url,publishableKey) : null;
 const money = (n:number) => '₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:0});
 const nav = [['Home',Home],['Overview',LayoutDashboard],['My events',CalendarDays],['Budget',Wallet],['Tasks',CheckSquare],['Guests',Users],['Vendors',Users],['Discover',MapPin],['AI studio',Sparkles],['My profile',UserRound]] as const;
 
