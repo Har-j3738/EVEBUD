@@ -210,3 +210,10 @@ body, .app-shell {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Data export controls */
+.section-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.secondary-btn{background:#e6eee7;color:#3f6250;box-shadow:none;border:1px solid #d4e1d6}
+.secondary-btn:hover{background:#dce9de;color:#304d3b}
+@media(max-width:520px){.section-actions{width:100%}.section-actions .btn{flex:1}}
