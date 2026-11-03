@@ -85,7 +85,7 @@ as $$
 declare
   v_guest_id uuid;
 begin
-  if p_response not in ('confirmed', 'declined') then
+  if p_response is null or p_response not in ('confirmed', 'declined') then
     raise exception 'RSVP must be confirmed or declined';
   end if;
   if p_token is null or p_token !~ '^[a-f0-9]{64}$' then
